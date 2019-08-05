@@ -25,7 +25,7 @@ int queue_test(unsigned int seed, unsigned int n)
 	std::vector<int> out;
 
 	int test_set_size = dice();
-	std::cout<<test_set_size<<std::endl;
+	std::cout<<"test begins. Test size = "<<test_set_size<<std::endl;
 
 	for (size_t i = 0; i < test_set_size; i++)
 	{
