@@ -46,7 +46,7 @@ int queue_test(unsigned int seed, unsigned int n)
 		}
 		elem = -1;
 		queue_push(&q, number);
-		int dist[] = {1,1,1,1,0,0,5,2,0,0,0};
+		int dist[] = {1,1,1,1,0,0,5,2,0,0,0,100};
 		size_t sd = sizeof(dist)/sizeof(dist[0]);
 		int f = dist[dice()%sd];
 		for (size_t j = 0; j < f; ++j)
