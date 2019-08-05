@@ -7,7 +7,6 @@ typedef struct _stack
 	int *storage;
 } stack;
 
-void stack_test(void);
 void stack_init(stack *s, int *start, size_t size);
 int push(stack *s, int elem);
 int pop(stack *s, int *elem);
