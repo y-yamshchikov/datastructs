@@ -14,3 +14,5 @@ int queue_push(queue *q, int elem);
 int queue_pop(queue *q, int *elem);
 size_t queue_size(queue *q);
 int queue_elem(queue *q, int *elem);
+bool queue_isfull(queue *q);
+bool queue_isempty(queue *q);

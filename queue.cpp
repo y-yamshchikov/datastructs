@@ -61,3 +61,13 @@ int queue_elem(queue *q, int *elem)
 
 	return 0;
 }
+
+bool queue_isfull(queue *q)
+{
+	return q->size == q->maxsize;
+}
+
+bool queue_isempty(queue *q)
+{
+	return q->size == 0;
+}
