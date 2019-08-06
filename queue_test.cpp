@@ -24,31 +24,48 @@ int queue_test(unsigned int seed, unsigned int n)
 	std::vector<int> in;
 	std::vector<int> out;
 
-	int test_set_size = dice();
-	std::cout<<"test begins. Test size = "<<test_set_size<<std::endl;
+	int number_of_shocks = dice();
+	std::cout << "Test begins. Number of shocks = "<< number_of_shocks <<std::endl;
 
-	for (size_t i = 0; i < test_set_size; i++)
+	for (size_t i = 0; i < number_of_shocks; i++)
 	{
-		int number = dice();
-		in.push_back(number);
+		//TODO coverage counters
+		size_t dist[] = {1,1,1,1,0,0,5,2,0,0,0,100};
+		size_t sd = sizeof(dist)/sizeof(dist[0]);
+		size_t f = dist[dice()%sd];
 		int elem = -1;
-		if (queue_isfull(&q))
+		int number = -1;
+
+		for (size_t j = 0; j < f; ++j)
 		{
-			if (queue_pop(&q, &elem) == 0)
+			number = dice();
+			if (queue_push(&q, number) == 0)
 			{
-				out.push_back(elem);
+				in.push_back(number);
 			}
 			else
 			{
-				std::cerr<<"cant't pop from full queue, inconsistence"<<std::endl;
-				return 1;
+				elem = -1;
+				if (queue_pop(&q, &elem) == 0)
+				{
+					out.push_back(elem);
+				}
+				else
+				{
+					if (queue_isfull(&q))
+					{
+						std::cerr<<"cant't pop from full queue, inconsistence"<<std::endl;
+						return 1;
+					}
+					std::cerr<<"can't pop as well as push to the queue, inconsistence"<<std::endl;
+					return 1;
+				}
 			}
 		}
+
+
 		elem = -1;
-		queue_push(&q, number);
-		int dist[] = {1,1,1,1,0,0,5,2,0,0,0,100};
-		size_t sd = sizeof(dist)/sizeof(dist[0]);
-		int f = dist[dice()%sd];
+		f = dist[dice()%sd];
 		for (size_t j = 0; j < f; ++j)
 		{
 			if (queue_pop(&q, &elem) == 0)
