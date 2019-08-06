@@ -1,3 +1,5 @@
+#ifndef QUEUE_H
+#define QUEUE_H
 #include <stddef.h>
 
 typedef struct _queue
@@ -16,3 +18,4 @@ size_t queue_size(queue *q);
 int queue_elem(queue *q, int *elem);
 bool queue_isfull(queue *q);
 bool queue_isempty(queue *q);
+#endif
